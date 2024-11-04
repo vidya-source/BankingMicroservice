@@ -1,6 +1,10 @@
-cd /var/lib/jenkins/workspace/Maven-Project
-sudo docker build . -t vidya801/prodimg:$BUILD_NUMBER
-sudo docker push vidya801/prodimg:$BUILD_NUMBER
-sudo chmod 777 docker.sh
-sudo bash docker.sh
-sudo docker container run -it --name prodcontainer -d vidya801/prodimg:$BUILD_NUMBER
+count=`sudo docker ps -a | wc -l`
+if [ $count -gt 1 ]
+then
+        sudo docker rm -f $(sudo docker ps -a -q)
+fi
+count1=`sudo docker images | wc -l`
+if [ $count1 -gt 1 ]
+then
+        sudo docker rmi -f $(sudo docker images -q)
+fi
