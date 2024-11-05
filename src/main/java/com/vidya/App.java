@@ -5,6 +5,6 @@ package com.vidya;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello Vidya!!");
+        System.out.println("Hello world!!");
     }
 }
