@@ -1,0 +1,38 @@
+---
+
+- name: Install Java and Apache2, then start Apache2
+
+  hosts: all
+
+  become: yes  # Run as sudo/root
+ 
+  tasks:
+
+    - name: Install OpenJDK
+
+      apt:
+
+        name: openjdk-11-jdk
+
+        state: present
+
+        update_cache: yes
+ 
+    - name: Install Apache2
+
+      apt:
+
+        name: apache2
+
+        state: present
+ 
+    - name: Ensure Apache2 is started and enabled
+
+      service:
+
+        name: apache2
+
+        state: started
+
+        enabled: yes
+ 
